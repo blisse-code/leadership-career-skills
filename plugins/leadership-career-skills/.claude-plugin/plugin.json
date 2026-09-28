@@ -1,0 +1,13 @@
+{
+  "name": "leadership-career-skills",
+  "version": "1.0.0",
+  "description": "Evidence-based skills for design and UX leadership job searches: leadership resumes, leadership case studies, storytelling, tailored resumes, cover letters, and portfolio architecture. No invented metrics.",
+  "author": {
+    "name": "Blisse Code",
+    "url": "https://github.com/blisse-code"
+  },
+  "homepage": "https://github.com/blisse-code/leadership-career-skills",
+  "repository": "https://github.com/blisse-code/leadership-career-skills",
+  "license": "MIT",
+  "keywords": ["resume", "cv", "case-study", "portfolio", "design-leadership", "ux", "storytelling", "cover-letter", "career"]
+}

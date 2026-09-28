@@ -1,0 +1,15 @@
+{
+  "name": "blisse-code-skills",
+  "description": "Evidence-based career skills for design and UX leaders: leadership resumes, leadership case studies, storytelling, cover letters, and portfolio architecture.",
+  "owner": {
+    "name": "Blisse Code",
+    "url": "https://github.com/blisse-code"
+  },
+  "plugins": [
+    {
+      "name": "leadership-career-skills",
+      "source": "./plugins/leadership-career-skills",
+      "description": "Six skills for design and UX leadership job searches: leadership resume, UX leadership case study, leadership storytelling, tailored resume, bespoke cover letter, and portfolio architect."
+    }
+  ]
+}

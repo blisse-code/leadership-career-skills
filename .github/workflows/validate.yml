@@ -1,0 +1,29 @@
+name: Validate
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate skills
+        run: python scripts/validate.py
+      - name: Build packages
+        run: python scripts/build.py
+      - name: Check JSON manifests
+        run: |
+          python -m json.tool .claude-plugin/marketplace.json > /dev/null
+          python -m json.tool plugins/leadership-career-skills/.claude-plugin/plugin.json > /dev/null
+      - name: Smoke-test resume scripts
+        run: |
+          pip install python-docx
+          S=plugins/leadership-career-skills/skills/leadership-resume-architect/scripts
+          echo '{"name":"Test","headline":"Head of Design","experience":[{"title":"Head","company":"Co","dates":"2022 - Present","bullets":["Built team from 3 to 14"]}]}' > t.json
+          python $S/render_resume_docx.py t.json t.docx
+          echo "Head of Design" > jd.txt
+          python $S/ats_check.py --resume t.docx --jd jd.txt

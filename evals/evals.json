@@ -1,0 +1,76 @@
+{
+ "evals": [
+  {
+   "skill": "leadership-resume-architect",
+   "id": 1,
+   "name": "director-resume-berlin",
+   "mode": "new",
+   "prompt": "I'm applying for this Director of Product Design role in Berlin. My raw notes are in evals/inputs/candidate_priya.md and the JD is in evals/inputs/jd_director_aurum.md. Build my resume for it. Don't make up numbers I don't have.",
+   "outputs": "resume.md (full resume text), resume.docx if you can render it, and notes.md with any evidence log / gaps / extras you would give the user"
+  },
+  {
+   "skill": "leadership-resume-architect",
+   "id": 2,
+   "name": "ic-to-first-manager",
+   "mode": "new",
+   "prompt": "i'm a senior product designer, 6 yrs, want my first design manager role. no specific JD yet. facts: at Finch (fintech, KL) since 2021 as senior PD on the lending app; I run the weekly design crit for 5 designers even though i'm not their manager; onboarded 2 new hires; proposed and got approval for a research repository that PMs now use; led the redesign of loan application which cut average completion time from 14 to 9 minutes; mentor 2 juniors, one got promoted. Before: product designer at Tapir Travel 2019-2021 (booking flows), junior designer at an agency 2018-2019. B.Sc Computer Science 2018. make my resume look like a leader without lying.",
+   "outputs": "resume.md and notes.md with anything else you'd hand the user"
+  },
+  {
+   "skill": "ux-leadership-case-study",
+   "id": 3,
+   "name": "telco-design-system-case",
+   "mode": "new",
+   "prompt": "I'm interviewing for Head of Design roles. Turn my telco account work into a leadership case study for my portfolio and a panel presentation. My notes are in evals/inputs/candidate_priya.md (use the Northlight telco account). Execs will be on the panel.",
+   "outputs": "case_study.md (portfolio-ready long form incl. skim), deck_outline.md (slide by slide), notes.md (evidence table, open questions, review)"
+  },
+  {
+   "skill": "ux-leadership-case-study",
+   "id": 4,
+   "name": "principal-influence-thin-input",
+   "mode": "new",
+   "prompt": "I'm a principal designer at a payments company. Last year I convinced leadership to kill a 'one-click upsell' feature in checkout that PMs loved because our research showed it was confusing merchants and driving refunds. It took about 3 months of arguing. Write it up as a leadership case study for my portfolio, it's the story that shows I lead without reports.",
+   "outputs": "case_study.md and notes.md"
+  },
+  {
+   "skill": "leadership-storytelling",
+   "id": 5,
+   "name": "director-panel-story-bank",
+   "mode": "new",
+   "prompt": "I have a Director of Product Design panel at Aurum Pay next week (evals/inputs/jd_director_aurum.md). Build me an interview story bank from my background in evals/inputs/candidate_priya.md, and a 90-second 'tell me about yourself'.",
+   "outputs": "story_bank.md (stories + competency matrix + tell-me-about-yourself)"
+  },
+  {
+   "skill": "leadership-storytelling",
+   "id": 6,
+   "name": "cfo-design-system-pitch",
+   "mode": "new",
+   "prompt": "I need to pitch our CFO on Thursday for 2 more headcount for the design system team. I get 3 minutes. Facts: 6 product squads, only 2 use the design system consistently; the other 4 rebuild components, and last quarter QA logged 140 UI inconsistency bugs; the 2 squads on the system ship UI features in about half the time (from our Jira cycle-time data). CFO cares about cost and risk. Write what I should say.",
+   "outputs": "pitch.md (spoken script + bullet version + likely questions)"
+  },
+  {
+   "skill": "tailored-resume-generator",
+   "id": 7,
+   "name": "midlevel-tailor-no-fabrication",
+   "mode": "update",
+   "prompt": "Tailor my resume to this job: evals/inputs/jd_midlevel_ux.md. My background: evals/inputs/candidate_marco.md",
+   "outputs": "resume.md and notes.md"
+  },
+  {
+   "skill": "bespoke-cover-letter",
+   "id": 8,
+   "name": "director-cover-letter",
+   "mode": "update",
+   "prompt": "Write my cover letter for evals/inputs/jd_director_aurum.md. My background is in evals/inputs/candidate_priya.md. (For this test: save the final letter text as letter.md; skip the .docx build and visual check.)",
+   "outputs": "letter.md and notes.md"
+  },
+  {
+   "skill": "principal-head-experience-ai-portfolio-architect",
+   "id": 9,
+   "name": "head-of-design-portfolio-plan",
+   "mode": "update",
+   "prompt": "Plan my leadership portfolio for Head of Design / Director roles in Europe. Background in evals/inputs/candidate_priya.md. I'm not available for questions today, so make assumptions, mark them, and take it as far as case study selection (through Phase 2).",
+   "outputs": "portfolio_plan.md"
+  }
+ ]
+}
