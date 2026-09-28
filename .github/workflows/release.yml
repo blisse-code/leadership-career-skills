@@ -1,7 +1,14 @@
 name: Release
+# Publishes a GitHub Release (with packaged .skill and ChatGPT zips) whenever the
+# plugin version in plugin.json changes on main, or on demand. The tag v<version>
+# is created automatically if it does not exist.
 on:
   push:
-    tags: ["v*"]
+    branches: [main]
+    paths:
+      - "plugins/leadership-career-skills/.claude-plugin/plugin.json"
+      - ".github/workflows/release.yml"
+  workflow_dispatch:
 permissions:
   contents: write
 jobs:
@@ -12,10 +19,33 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python scripts/validate.py && python scripts/build.py
-      - uses: softprops/action-gh-release@v2
+      - name: Read version
+        id: v
+        run: echo "version=$(python -c "import json;print(json.load(open('plugins/leadership-career-skills/.claude-plugin/plugin.json'))['version'])")" >> "$GITHUB_OUTPUT"
+      - name: Skip if release exists
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "v${{ steps.v.outputs.version }}" >/dev/null 2>&1; then echo "exists=true" >> "$GITHUB_OUTPUT"; else echo "exists=false" >> "$GITHUB_OUTPUT"; fi
+      - name: Validate and build
+        if: steps.check.outputs.exists == 'false'
+        run: python scripts/validate.py && python scripts/build.py
+      - name: Publish release
+        if: steps.check.outputs.exists == 'false'
+        uses: softprops/action-gh-release@v2
         with:
+          tag_name: v${{ steps.v.outputs.version }}
+          name: v${{ steps.v.outputs.version }} Leadership Career Skills
+          target_commitish: ${{ github.sha }}
           generate_release_notes: true
+          body: |
+            Install files:
+            - `claude/*.skill`: Claude app (Customize > Skills > upload) or unzip into `~/.claude/skills/`
+            - `*-chatgpt.zip`: ChatGPT Skills (Business/Enterprise/Edu)
+            - `custom-gpts-fallback.zip`: Custom GPT instructions + knowledge (ChatGPT Plus/Pro)
+            - `leadership-career-skills-all.zip`: everything
+            Claude Code users can skip downloads: `claude plugin marketplace add blisse-code/leadership-career-skills`
           files: |
             dist/claude/*.skill
             dist/chatgpt/*.zip
